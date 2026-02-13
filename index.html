@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clock App</title>
+</head>
+<body>
+
+    <div class="app">
+      <h1>Clock App</h1>
+
+      <nav class="tabs">
+        <button data-tab="clock" class="active">Clock</button>
+        <button data-tab="alarm">Alarm</button>
+        <button data-tab="stopwatch">Stopwatch</button>
+        <button data-tab="timer">Timer</button>
+        <button data-tab="world">World Clock</button>
+      </nav>
+
+      <!-- Clock -->
+      <section id="clock" class="tab active">
+        <h2 id="time">00:00:00</h2>
+        <p id="date">Loading date...</p>
+      </section>
+
+      <!-- Analog Clock -->
+        <div class="analog-clock watch-face" id="analogClock">
+          <div class="ticks"></div>
+
+          <div class="numbers">
+            <span style="--n:1">I</span>
+            <span style="--n:2">II</span>
+            <span style="--n:3">III</span>
+            <span style="--n:4">IV</span>
+            <span style="--n:5">V</span>
+            <span style="--n:6">VI</span>
+            <span style="--n:7">VII</span>
+            <span style="--n:8">VIII</span>
+            <span style="--n:9">IX</span>
+            <span style="--n:10">X</span>
+            <span style="--n:11">XI</span>
+            <span style="--n:12">XII</span>
+          </div>
+
+          <div class="dial-image"></div>
+
+          <div class="hand hour" id="hourHand"></div>
+          <div class="hand minute" id="minuteHand"></div>
+          <div class="hand second smooth" id="secondHand"></div>
+          <div class="date-window" id="dateWindow"></div>
+
+          <div class="center-dot"></div>
+        </div>
+
+      <!-- Alarm -->
+      <section id="alarm" class="tab">
+        <input type="time" id="alarmTime">
+        <button id="setAlarm">Set Alarm</button>
+        <button id="stopAlarm">Stop Alarm</button>
+        <input type="text" id="alarmLabel" placeholder="Alarm Label (optional)">
+        <ul id="alarmList"></ul>
+      </section>
+
+      <!-- Stopwatch -->
+      <section id="stopwatch" class="tab">
+        <h2 id="swTime">00:00:00.000</h2>
+        <button id="swStart">Start/Resume</button>
+        <button id="swPause">Pause</button>
+        <button id="swReset">Reset</button>
+      </section>
+
+      <!-- Timer -->
+      <section id="timer" class="tab">
+        <input type="number" id="timerMinutes" placeholder="Minutes">
+        <h2 id="timerDisplay">00:00</h2>
+        <button id="timerStart">Start</button>
+        <button id="timerReset">Reset</button>
+      </section>
+
+      <!-- World Clock -->
+      <section id="world" class="tab">
+        <select id="city">
+          <option value="UTC">UTC</option>
+          <option value="America/New_York">New York</option>
+          <option value="Europe/London">London</option>
+          <option value="Asia/Tokyo">Tokyo</option>
+          <option value="Australia/Sydney">Sydney</option>
+          <option value="Africa/Nairobi">Nairobi</option>
+        </select>
+        <h2 id="worldTime">Select a city to see the time</h2>
+      </section>
+    </div>
+    
+<link rel="stylesheet" href="style.css">
+<script src="script.js" defer></script>
+<script src="alarm.js" defer></script>
+<script src="timer.js" defer></script>
+<script src="worldClock.js" defer></script>
+</body>
+</html>

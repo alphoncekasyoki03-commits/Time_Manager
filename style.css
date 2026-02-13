@@ -1,0 +1,227 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #0f172a;
+    color: #ffffff;
+}
+
+.dial-image {
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    background: url(logo.png) center/contain no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 1;
+    z-index: 0;
+    pointer-events: none;
+}
+
+.ticks { z-index: 1; }
+.numbers { z-index: 2; }
+.hand { z-index: 3; }
+.center-dot { z-index: 4; }
+
+body[data-face="sport"] {
+    --accent: red;
+}
+
+.app {
+    background-color: #020617;
+    padding: 20px;
+    width: 320px;
+    border-radius: 12px;
+    text-align: center;
+}
+
+.tabs {
+    display: flex;
+    gap: 5px;
+    margin-bottom: 15px;
+}
+
+.tabs button {
+    flex: 1;
+    padding: 5px;
+    background-color: #1e293b;
+    border: none;
+    color: #ffffff;
+    cursor: pointer;
+    border-radius: 6px;
+}
+
+.tabs button.active {
+    background-color: #38bdf8;
+    color: black;
+}
+
+.tab {
+    display: none;
+}
+
+.tab.active {
+    display: block;
+}
+
+input, button, select {
+    padding: 6px;
+    margin: 5px 0;
+    width: 100%;
+}
+
+button {
+    background-color: #38bdf8;
+    border: none;
+    cursor: pointer;
+    border-radius: 6px;
+}
+
+.analog-clock {
+    position: relative;
+    width: 200px;
+    height: 200px;
+    margin: 20px auto;
+    border: 6px solid #38bdf8;
+    border-radius: 50%;
+    background: var(--face-bg);
+    overflow: hidden;
+}
+
+.analog-clock::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    background: linear-gradient(120deg, rgba(255,255,255,0.15), transparent 60%);
+    pointer-events: none;
+}
+
+.hand {
+    position: absolute;
+    bottom: 50%;
+    left: 50%;
+    transform-origin: bottom center;
+    transform: translateX(-50%);
+    border-radius: 6px;
+}
+
+.hour {
+    width: 6px;
+    height: 50px;
+    background: var(--text);
+    background-color: white;
+}
+
+.minute {
+    width: 4px;
+    height: 85px;
+    background: var(--accent);
+    background-color: #38bdf8;
+}
+
+.second {
+    width: 2px;
+    height: 100px;
+    background-color: red;
+}
+
+.second::after {
+    content: "";
+    position: absolute;
+    bottom: -20px;
+    left: 50%;
+    width: 4px;
+    height: 20px;
+    background-color: red;
+    border-radius: 2px;
+    transform: translateX(-50%);
+}
+
+.smooth {
+    transition: transform 0.5s linear;
+}
+
+.center-dot {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 12px;
+    height: 12px;
+    background: var(--text);
+    background-color: white;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.hidden {
+    display: none;
+}
+
+.watch-face {
+    background: radial-gradient(circle at center, var(--face-bg) 60%, rgba(0,0,0,0.4));
+}
+
+.watch-face::after {
+    content: "";
+    position: absolute;
+    inset: -6px;
+    border-radius: 50%;
+    box-shadow: 0 0 20px rgba(56, 189, 248, 0.4);
+}
+
+/* Numbers */
+.numbers {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+}
+
+.numbers span {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: 
+        translate(-50%, -50%) 
+        rotate(calc(var(--n) * 30deg)) 
+        translateY(-90px) 
+        rotate(calc(-1 * var(--n) * 30deg));
+    color: var(--text);
+    font-size: 1rem;
+    font-weight: bold;
+    text-shadow: 0 0 4px rgba(0, 0, 0, 0.6);
+}
+
+.date-window {
+    position: absolute;
+    right: 30px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: var(--face-bg);
+    border: 1px solid var(--tick);
+    background-color: #020617;
+    padding: 2px 6px;
+    font-size: 0.8rem;
+    z-index: 4;
+    pointer-events: none;
+}
+
+/* Tick marks */
+.ticks {
+    position: absolute;
+    inset: 10px;
+    border-radius: 50%;
+    background: repeating-conic-gradient(
+        from 0deg,
+        var(--tick) 0deg 2deg, 
+        transparent 2deg 6deg
+    ),
+    repeating-conic-gradient(
+        from 0deg,
+        var(--tick) 0deg 1deg, 
+        transparent 4deg 30deg
+    );
+}
